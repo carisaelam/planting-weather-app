@@ -630,7 +630,7 @@ const forecastContainer = document.querySelector(".forecast__container");
 const gridBoxes = document.querySelectorAll(".grid__box");
 const form = document.querySelector(".selection__container__form");
 const headerCity = document.querySelector(".header__city");
-const firstBox = document.getElementById("day__one");
+const secondBox = document.getElementById("day__two");
 
 plantInstructionsContainer.style.display = "none";
 forecastContainer.style.display = "none";
@@ -653,9 +653,9 @@ function fetchWeatherData(location) {
 }
 
 function setPlantInstructions() {
-  if (firstBox.innerHTML.includes("Inside")) {
+  if (secondBox.innerHTML.includes("Inside")) {
     plantInstructions.innerHTML = "bring your plant babies inside ";
-  } else if (firstBox.innerHTML.includes("Outside")) {
+  } else if (secondBox.innerHTML.includes("Outside")) {
     plantInstructions.innerHTML = "leave the plant babies outside ";
   } else {
     plantInstructions.innerHTML = "_______";
