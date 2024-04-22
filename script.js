@@ -634,6 +634,9 @@ const secondBox = document.getElementById("day__two");
 
 plantInstructionsContainer.style.display = "none";
 forecastContainer.style.display = "none";
+// const athensLatLong = 33.9519, -83.3576
+// const madisonLatLong = 33.5957, -83.4679
+
 // const city = form.elements.city.value;
 
 // Individual forecast grid boxes #day__one, day__two, etc.
@@ -642,7 +645,7 @@ forecastContainer.style.display = "none";
 
 function fetchWeatherData(location) {
   return fetch(
-    `https://api.tomorrow.io/v4/weather/forecast?location=${location}&timesteps=1d&units=imperial&apikey=R4Ce0bEsRFRfx90UteM652oaJfkUnQYQ`
+    `https://api.tomorrow.io/v4/weather/forecast?location=${location}%20US&timesteps=1d&units=imperial&apikey=R4Ce0bEsRFRfx90UteM652oaJfkUnQYQ`
   )
     .then((response) => response.json())
 
@@ -668,14 +671,12 @@ function handleSubmit(e) {
   e.preventDefault();
   console.log("form submitted");
 
-  fetchWeatherData(30605)
+  fetchWeatherData(30510)
     .then((data) => {
-      // Use the fetched weather data
       updateForecastBoxes(data);
       setPlantInstructions();
     })
     .catch((error) => {
-      // Handle errors
       console.error(error);
     });
 }
@@ -683,6 +684,7 @@ function handleSubmit(e) {
 function updateForecastBoxes(data) {
   console.log(data);
   const dailyData = data.timelines.daily;
+  console.log("dailyData", dailyData);
   for (let i = 0; i < gridBoxes.length; i++) {
     const minTemp = Number(form.elements.mintemp.value);
     const maxTemp = Number(form.elements.maxtemp.value);
