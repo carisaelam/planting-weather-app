@@ -104,7 +104,24 @@ main {
 }
 
 .header__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+}
+
+.header__title__container {
+  max-width: 20rem;
+  height: auto;
+  margin: 0;
+  padding: 1rem;
+  border-bottom: 1px solid gray;
+  border: none;
+}
+
+.header__title {
+  margin: 0;
+  color: hsla(0, 0%, 0%, 0.863);
 }
 
 .selection__container {
@@ -130,6 +147,7 @@ main {
   background-color: hsla(121, 87%, 61%, 0.788);
   box-shadow: 0 0 5px hsla(0, 0%, 50%, 0.336);
   font-weight: bold;
+  color: black;
 }
 
 .plant__instructions__container {
@@ -154,6 +172,7 @@ main {
 
 .forecast__grid {
   display: flex;
+  justify-content: center;
   gap: 1rem;
   overflow: scroll;
   padding: 1rem;

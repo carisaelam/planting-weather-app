@@ -617,7 +617,8 @@
 // const apiKey = "f036c23ce0d0e31d5d459fd8c27e0cda"; //openweather
 // const apiKey2 = "R4Ce0bEsRFRfx90UteM652oaJfkUnQYQ"; //tomorrow.io
 
-const cityNameInput = document.querySelector(".selection__city__input");
+const zipcodeInput = document.querySelector(".selection__zipcode__input");
+let zipcode = "";
 const minTempInput = document.querySelector(".selection__mintemp__input");
 const maxTempInput = document.querySelector(".selection__maxtemp__input");
 const plantInstructions = document.querySelector(
@@ -643,9 +644,9 @@ forecastContainer.style.display = "none";
 
 //Functions
 
-function fetchWeatherData(location) {
+function fetchWeatherData(zipcode) {
   return fetch(
-    `https://api.tomorrow.io/v4/weather/forecast?location=${location}%20US&timesteps=1d&units=imperial&apikey=R4Ce0bEsRFRfx90UteM652oaJfkUnQYQ`
+    `https://api.tomorrow.io/v4/weather/forecast?location=${zipcode}%20US&timesteps=1d&units=imperial&apikey=R4Ce0bEsRFRfx90UteM652oaJfkUnQYQ`
   )
     .then((response) => response.json())
 
@@ -671,7 +672,7 @@ function handleSubmit(e) {
   e.preventDefault();
   console.log("form submitted");
 
-  fetchWeatherData(30510)
+  fetchWeatherData(zipcode)
     .then((data) => {
       updateForecastBoxes(data);
       setPlantInstructions();
@@ -724,12 +725,12 @@ function updateForecastBoxes(data) {
   }
 }
 
-//Event listeners
-// cityNameInput.addEventListener("change", () => {
-//   let cityName = cityNameInput.value;
-//   console.log("city name is ", cityName);
-//   return cityName;
-// });
+// Event listeners
+zipcodeInput.addEventListener("change", () => {
+  zipcode = zipcodeInput.value;
+  console.log("zipcode is ", zipcode);
+  return zipcode;
+});
 
 minTempInput.addEventListener("change", () => {
   let minTemp = minTempInput.value;
